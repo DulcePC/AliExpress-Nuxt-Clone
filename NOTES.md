@@ -1,0 +1,3 @@
+-No agregamos el stripe/stripe-js, el que agrege fue: @unlok-co/nuxt-stripe
+-No agregamos  @prisma/client sino @prisma/nuxt
+-No instalamos en Lodash
