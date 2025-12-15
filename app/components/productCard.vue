@@ -21,9 +21,10 @@
         <UBadge label="Promo" color="error" size="xs" />
         <h6 class="whitespace-nowrap text-sm text-[#191919]">Funda protectora para auriculares AirPods de silicona suave y duradera, compatible con AirPods 1, 2 y Pro. Diseño elegante y ligero que ofrece protección contra golpes y arañazos.</h6>
       </div>
-      <p class="font-bold">
+      <p class="font-bold my-1 flex flex-wrap items-center gap-1">
         <span class="text-sm">DOP</span>
-        <span class="text-xl">599.00</span>
+        <span class="text-xl">{{ formatNumber(1234) }}</span>
+        <span class="font-normal text-sm text-gray-400 line-through">DOP{{ formatNumber(1234) }}</span>
       </p>
       <p class="offer-text">
         <img src="https://ae01.alicdn.com/kf/S0f1bc1aeb2ab4de98568b86f99bcd0991/42x60.png" width="11" alt="Product Image">
@@ -34,7 +35,14 @@
 </template>
 
 <script lang="ts" setup>
+import type { Product } from '~~/types/product';
 
+const props = defineProps<{
+  product: {
+    type: Product,
+    required: false
+  }
+}>();
 
 const UButtonStyles = {
   base: 'absolute bottom-2 right-2 bg-white hover:bg-white rounded-full text-black shadow-md hover:bg-black hover:text-white transition-colors',
