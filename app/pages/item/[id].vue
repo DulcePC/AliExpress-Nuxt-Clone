@@ -1,81 +1,181 @@
 <template>
   <section>
-    <div class="grid grid-cols-12 gap-8">
-      <div class="col-span-9 flex gap-4">
-        <!--Thumbnail-->
-        <div class="flex flex-col gap-1 justify-between">
-          <div
-            v-for="(item, index) in items"
-            :key="index"
-            class="size-12 opacity-25 hover:opacity-100 transition-opacity"
-            :class="{ 'ring-2 ring-black border-black': activeIndex === index }"
-            @click="select(index)"
-          >
-            <NuxtImg :src="item" width="48" height="48" />
-          </div>
-        </div>
-        <!--Main Carousel-->
-        <UCarousel
-          ref="carousel"
-          v-slot="{ item }"
-          arrows
-          :items="items"
-          :ui="carouselUi"
-          :prev="{ onClick: onClickPrev }"
-          :next="{ onClick: onClickNext }"
-          @select="onSelect"
-        >
-          <div
-            class="relative w-full h-full overflow-hidden cursor-zoom-in"
-            @mousemove="handleZoom"
-            @mouseleave="resetZoom"
-          >
-            <NuxtImg
-              ref="zoomImage"
-              :src="item"
-              class="w-full h-full object-cover transition-transform duration-200 ease-out"
-              :style="zoomStyle"
-            />
-          </div>
-        </UCarousel>
-        <!-- Content-->
+    <div class="grid xl:grid-cols-12 lg:grid-cols-1 gap-8">
+      <div class="xl:col-span-9">
+       <div class="flex gap-4">
+         <!--Thumbnail-->
+         <div class="flex flex-col gap-1 justify-between">
+           <div
+             v-for="(item, index) in items"
+             :key="index"
+             class="size-12 opacity-25 hover:opacity-100 transition-opacity"
+             :class="{ 'ring-2 ring-black border-black': activeIndex === index }"
+             @click="select(index)"
+           >
+             <NuxtImg :src="item" width="48" height="48" />
+           </div>
+         </div>
+         <!--Main Carousel-->
+         <UCarousel
+           ref="carousel"
+           v-slot="{ item }"
+           arrows
+           :items="items"
+           :ui="carouselUi"
+           :prev="{ onClick: onClickPrev }"
+           :next="{ onClick: onClickNext }"
+           @select="onSelect"
+         >
+           <div
+             class="relative w-full h-full overflow-hidden cursor-zoom-in"
+             @mousemove="handleZoom"
+             @mouseleave="resetZoom"
+           >
+             <NuxtImg
+               ref="zoomImage"
+               :src="item"
+               class="w-full h-full object-cover transition-transform duration-200 ease-out"
+               :style="zoomStyle"
+             />
+           </div>
+         </UCarousel>
+         <!-- Content-->
+         <div>
+           <h1 class="text-black font-bold text-base">4 unids/set moda Casual hombres estilo deportivo tendencia reloj de pulsera de cuarzo y pulsera de cuentas conjunto regalo para hombres novios reloj Masculino</h1>
+           <div class="flex items-center mt-1">
+             <div class="flex items-center">
+               <UIcon name="material-symbols-light:kid-star" />
+               <UIcon name="material-symbols-light:kid-star" />
+               <UIcon name="material-symbols-light:kid-star" />
+               <UIcon name="material-symbols-light:kid-star-outline" />
+               <UIcon name="material-symbols-light:kid-star-outline" />
+             </div>
+             <p class="ml-2 text-sm text-black"><b>4.2</b> 91 valoraciones ౹ 248 vendido(s)</p>
+           </div>
+           <div class="flex items-center mt-1 gap-2">
+             <p class="text-4xl font-bold mt-4">DOP799.00</p>
+             <!--   Discounts available-->
+             <div>
+               <UBadge label="-DOP175.26 · Nuevo comprador" color="error" size="sm" variant="soft" />
+               <p class="text-xs text-gray-600 mt-1 line-through font-regular">DOP237.87</p>
+             </div>
+           </div>
+           <USeparator class="my-2" />
+           <div id="variations">
+             <div  class="variations-block">
+               <h6 class="text-black font-bold">Tamaño: Gris</h6>
+               <div class="flex items-center gap-2 mt-3">
+                 <div  class="size-box active">
+                   <p>S</p>
+                 </div>
+                 <div  class="size-box">
+                   <p>M</p>
+                 </div>
+                 <div  class="size-box">
+                   <p>LG</p>
+                 </div>
+               </div>
+             </div>
+             <div  class="variations-block">
+               <h6 class="text-black font-bold">Color: Gris</h6>
+               <div class="flex items-center gap-2 mt-3">
+                 <div  class="color-box active">
+                   <NuxtImg src="https://picsum.photos/32/32?random=7"   />
+                 </div>
+                 <div  class="color-box">
+                   <NuxtImg src="https://picsum.photos/32/32?random=7"   />
+                 </div>
+                 <div  class="color-box">
+                   <NuxtImg src="https://picsum.photos/32/32?random=7"  />
+                 </div>
+               </div>
+             </div>
+           </div>
+           <USeparator class="my-2" />
+           <!--  Descriptions-->
+         </div>
+       </div>
+        <!-- Articulos similares -->
         <div>
-          <h1 class="text-black font-bold text-base">4 unids/set moda Casual hombres estilo deportivo tendencia reloj de pulsera de cuarzo y pulsera de cuentas conjunto regalo para hombres novios reloj Masculino</h1>
-          <div class="flex items-center mt-1">
-            <div class="flex items-center">
-              <UIcon name="material-symbols-light:kid-star" />
-              <UIcon name="material-symbols-light:kid-star" />
-              <UIcon name="material-symbols-light:kid-star" />
-              <UIcon name="material-symbols-light:kid-star-outline" />
-              <UIcon name="material-symbols-light:kid-star-outline" />
-            </div>
-            <p class="ml-2 text-sm"><b>4.2</b> 91 valoraciones ౹ 248 vendido(s)</p>
+          <h2>Artículos similares</h2>
+          <ProductCard />
+        </div>
+        <USeparator class="my-2" />
+        <!-- Navegacion de descripción del producto -->
+        <nav>
+          <UButton color="neutral" variant="link">Valoraciones</UButton>
+          <UButton color="neutral" variant="link">Detalles</UButton>
+          <UButton color="neutral" variant="link">Descripción</UButton>
+          <UButton color="neutral" variant="link">Tienda</UButton>
+          <UButton color="neutral" variant="link">Te podría interesar</UButton>
+        </nav>
+      </div>
+      <!-- Aside -->
+      <div class="xl:col-span-3">
+        <div class="border border-gray-300 p-3">
+          <div class="flex items-center justify-between gap-2">
+            <p class="text-black text-sm font-bold">Vendido por:</p>
+            <p  class="text-black text-sm">Vivian Store</p>
           </div>
-          <div class="flex items-center mt-1 gap-2">
-            <p class="text-4xl font-bold mt-4">DOP799.00</p>
-            <!--   Discounts available-->
+          <USeparator class="my-2" />
+          <div class="flex items-center justify-between gap-2">
+            <p class="text-black font-bold text-sm">Envío a:</p>
+            <p  class="text-black text-sm">Dominican Republic</p>
+          </div>
+          <USeparator class="my-2" />
+          <div class="flex items-center mb-3">
             <div>
-              <UBadge label="-DOP175.26 · Nuevo comprador" color="error" size="sm" variant="soft" />
-              <p class="text-xs text-gray-600 mt-1 line-through font-regular">DOP237.87</p>
+              <div class="flex items-center gap-1">
+                <UIcon name="icon-park-outline:transporter" class="w-5 block"  />
+                <p class="font-bold text-black">Envío: DOP343.55 </p>
+              </div>
+              <p class="text-sm text-gray-600 pl-6 font-semibold"> Entrega: <span class="text-black font-black">17  de <span class="uppercase">jun</span></span></p>
+            </div>
+          </div>
+          <div class="flex items-center mb-3">
+            <UIcon name="icon-park-outline:transporter" class="w-5 block"  />
+            <p class="font-bold text-black text-sm">Política de devoluciones y reembolsos</p>
+          </div>
+          <div class="flex items-center mb-3">
+            <div>
+              <div  class="flex items-center gap-1">
+                <UIcon name="icon-park-outline:transporter" class="w-5 block"  />
+                <p class="font-bold text-black text-sm">Seguridad & Privacidad</p>
+              </div>
+              <p class="text-xs text-gray-600 mt-1 font-semibold pl-6">Pagos seguros: No compartiremos tus dat....
+                Datos personales seguros: Protegemos tu priva...</p>
             </div>
           </div>
           <USeparator class="my-2" />
-          <p>variaciones</p>
-        </div>
-      </div>
-      <div class="col-span-3">
-        <div class="border border-gray-300 p-2">
-          <p class="text-sm">Envío gratis a República Dominicana</p>
-          <p class="text-sm mt-1">Entrega estimada: 27 jun - 3 jul</p>
+          <div>
+            <h6 class="text-black font-bold text-base mb-2">Cantidad</h6>
+            <div class="flex items-center gap-1">
+              <UButton :disabled="quantity <= 1" icon="i-lucide-minus" size="xs" color="primary" variant="solid" :ui="{ base: 'rounded-full' }" @click="decrementQuantity" />
+              <input type="number" min="1" v-model="quantity" />
+              <UButton icon="i-lucide-plus" size="xs" color="primary" variant="solid" :ui="{ base: 'rounded-full' }" @click="incrementQuantity" />
+            </div>
+          </div>
           <UButton
             class="w-full mt-4"
             color="error"
             size="xl"
             label="Comprar"
             :ui="{
-              base: 'bg-red-600 hover:bg-red-700 text-white items-center justify-center',
+              base: 'bg-red-600 hover:bg-red-700 text-white text-sm font-bold',
             }"
           />
+          <UButton
+            class="w-full mt-4"
+            variant="outline"
+            color="neutral"
+            size="xl"
+            label="Agregar al carrito"
+            :ui="{
+              base: ' ring-black text-black text-sm font-bold',
+            }"
+            @click="handleAddToCart"
+          />
+          <!-- -->
           <div class="flex items-center justify-center gap-2">
             <UButton
               class="w-full mt-4"
@@ -83,7 +183,7 @@
               size="xl"
               label="Compartir"
               :ui="{
-                base: 'bg-[#f5f5f5] text-black !font-regular items-center justify-center',
+                base: 'bg-[#f5f5f5] text-black font-regular',
               }"
             />
             <UButton
@@ -91,6 +191,9 @@
               color="neutral"
               size="xl"
               label="10.9k"
+              :ui="{
+                base: 'bg-[#f5f5f5] text-black font-regular',
+              }"
             />
           </div>
         </div>
@@ -103,6 +206,43 @@
 definePageMeta({
   layout: 'product-detail'
 })
+
+const { addToCart } = useCart();
+const quantity = ref(1);
+
+// Producto de ejemplo (esto debería venir de una API)
+const product = ref({
+  id: 1,
+  name: '4 unids/set moda Casual hombres estilo deportivo tendencia reloj de pulsera de cuarzo',
+  description: 'Reloj de pulsera de cuarzo y pulsera de cuentas conjunto regalo para hombres',
+  price: 799,
+  inStock: true,
+  imageUrl: 'https://picsum.photos/640/640?random=1',
+  categories: ['relojes', 'accesorios'],
+  discount: 175.26,
+  topSeller: true,
+  slug: 'reloj-pulsera-hombres'
+});
+
+const incrementQuantity = () => {
+  quantity.value++;
+};
+
+const decrementQuantity = () => {
+  if (quantity.value > 1) {
+    quantity.value--;
+  }
+};
+
+const handleAddToCart = () => {
+  addToCart({
+    id: Date.now(),
+    item: {
+      ...product.value,
+      quantity: quantity.value
+    }
+  });
+};
 
 const items = [
   'https://picsum.photos/640/640?random=1',
@@ -164,5 +304,37 @@ function resetZoom() {
     transformOrigin: 'center'
   }
 }
-
 </script>
+
+<style scoped>
+@reference "~/assets/css/main.css";
+
+.variations-block {
+  &:not(:first-child) {
+    @apply mt-4;
+  }
+}
+
+.size-box {
+  @apply h-10 min-w-16 border-2 border-gray-300 cursor-pointer flex items-center justify-center mb-2;
+  p { @apply font-semibold text-base; }
+
+  &.active {
+    @apply border-black;
+  }
+}
+
+.color-box {
+  @apply !size-16 border border-gray-300 cursor-pointer flex-none block mb-2;
+  img { @apply object-cover w-full; }
+
+  &.active {
+    @apply ring-2 ring-black ;
+  }
+}
+
+input {
+  appearance: none !important;
+  @apply !w-4 !inline-block font-semibold text-black text-center;
+}
+</style>

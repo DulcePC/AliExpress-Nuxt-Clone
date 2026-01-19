@@ -1,5 +1,8 @@
 <template>
-  <UCard as="NuxtLink">
+  <UCard as="NuxtLink" :ui="{
+    body: 'overflow-hidden',
+
+  }">
     <template #header>
       <img src="https://picsum.photos/id/46/400" alt="Product Image" class="w-full h-48 object-cover" />
       <UButton
@@ -7,6 +10,7 @@
         size="xl"
         color="neutral"
         :ui=UButtonStyles
+        @click.prevent="handleAddToCart"
       />
     </template>
     <template #default>
@@ -38,14 +42,25 @@
 import type { Product } from '~~/types/product';
 
 const props = defineProps<{
-  product: {
-    type: Product,
-    required: false
-  }
+  product?: Product
 }>();
 
+const { addToCart } = useCart();
+
+const handleAddToCart = () => {
+  if (!props.product) return;
+
+  addToCart({
+    id: Date.now(),
+    item: {
+      ...props.product,
+      quantity: 1
+    }
+  });
+};
+
 const UButtonStyles = {
-  base: 'absolute bottom-2 right-2 bg-white hover:bg-white rounded-full text-black shadow-md hover:bg-black hover:text-white transition-colors',
+  base: 'absolute bottom-2 right-2 bg-white hover:bg-white rounded-full text-black shadow-md hover:bg-black hover:text-white transition-colors w-11',
 };
 
 </script>

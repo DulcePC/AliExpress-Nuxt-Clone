@@ -3,7 +3,14 @@ export default defineAppConfig({
   ui: {
     button: {
       slots: {
-        base:[ 'rounded-none cursor-pointer text-center font-bold' ]
+        base:[ 'rounded-none cursor-pointer text-center font-bold items-center justify-center' ],
+      },
+      variants: {
+        size: {
+          xl: {
+            base: 'h-11'
+          }
+        }
       }
     },
     input: {

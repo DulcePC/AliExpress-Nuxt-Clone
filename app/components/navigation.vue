@@ -11,12 +11,12 @@
           </li>
           <div class="lg:flex items-center hidden">
             <!-- Download App-->
-            <li class="pl-6">
-              <div class="nav-item-top">
-                <UIcon class="icon" name="teenyicons:qr-code-outline" />
-                <span class="text">Descarga la app <br> de AliExpress</span>
-              </div>
-            </li>
+<!--            <li class="pl-6">-->
+<!--              <div class="nav-item-top">-->
+<!--                <UIcon class="icon" name="teenyicons:qr-code-outline" />-->
+<!--                <span class="text">Descarga la app <br> de AliExpress</span>-->
+<!--              </div>-->
+<!--            </li>-->
             <!--   Country-->
             <li>
               <div class="nav-item-top flex flex-col self-start">
@@ -35,7 +35,7 @@
               <div class="nav-item-top">
                 <UIcon class="icon"  name="ph:shopping-cart-simple-light" />
                 <div class="flex flex-col">
-                  <span>01</span>
+                  <span class="bg-black rounded-4xl text-white text-center font-bold">{{ quantity.toString().padStart(2, '0') }}</span>
                   <span class="text"><b>Cesta</b></span>
                 </div>
               </div>
@@ -48,6 +48,7 @@
 </template>
 
 <script setup lang="ts">
+const { quantity } = useCart();
 </script>
 
 <style scoped>
