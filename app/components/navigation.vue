@@ -32,13 +32,7 @@
               </div>
             </li>
             <li>
-              <div class="nav-item-top">
-                <UIcon class="icon"  name="ph:shopping-cart-simple-light" />
-                <div class="flex flex-col">
-                  <span class="bg-black rounded-4xl text-white text-center font-bold">{{ quantity.toString().padStart(2, '0') }}</span>
-                  <span class="text"><b>Cesta</b></span>
-                </div>
-              </div>
+             <slot></slot>
             </li>
           </div>
         </ul>
@@ -46,10 +40,6 @@
     </UContainer>
   </header>
 </template>
-
-<script setup lang="ts">
-const { quantity } = useCart();
-</script>
 
 <style scoped>
 @reference "~/assets/css/main.css";
